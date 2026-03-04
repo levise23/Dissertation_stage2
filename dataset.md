@@ -12,7 +12,7 @@ cd ~/remote/stage2dataset
 python extract_feature.py \
     --csv_path '/usr1/home/s125mdg43_07/remote/stage2dataset/gallery/gallery.csv' \
     --output_pt 'sate02res.pt' \
-    --weight_path'/usr1/home/s125mdg43_07/remote/rebuild/Dissertation/checkpoints/curriculum_s2_o1/net_020.pth' 
+    --weight_path '/usr1/home/s125mdg43_07/remote/rebuild/Dissertation/checkpoints/curriculum_s2_o1/net_020.pth' 
 
 还要从传过来的切片中读取图片，将切片转化为特征 保存在uav{idx}res.pt
 python extract_feature.py \
@@ -24,3 +24,6 @@ python extract_feature.py \
 /usr1/home/s125mdg43_07/remote/stage2dataset/build_ground_truth.py
 现在是参数写死，后面要改成可调
 
+4.使用calculate.py计算集群的定位，现在的R@1能有0.35 集群优化后的R@1有0.58
+将其匹配结果作为样本对，放进特征提取（ai调用库）fine_localize.py,输出match_pairs_for_fine.csv
+给出精准定位结果
